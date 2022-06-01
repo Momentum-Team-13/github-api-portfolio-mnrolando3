@@ -1,0 +1,39 @@
+#portfolio {
+    border: 5px solid green;
+}
+
+header {
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center; */
+    border: 5px solid magenta;
+}
+
+.name{
+    border: 5px solid black;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    border: 5px solid gray;
+}
+
+.repo {
+    border: 5px solid blueviolet;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+}
