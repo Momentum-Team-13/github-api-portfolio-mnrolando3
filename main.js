@@ -19,7 +19,7 @@ fetch(myGitHub, {
     })
     .then(function (data) {
         //data is what the above promise returned
-        console.log("Hello!", data)
+        console.log("Data", data)
         //show the returned data in the console
         buildProfile(data)
         //call function built below on the returned data
@@ -33,7 +33,7 @@ fetch(myRepos, {
         return response.json()
     })
     .then(function (repos) {
-        console.log("Hello!", repos)
+        console.log("Repos", repos)
         buildRepoList(repos)
     })
 
@@ -74,10 +74,18 @@ function buildProfile(profileData) {
 }
 
 function buildRepoList(repoList) {
-    console.log(repoList.name)
-    let linkList = document.createElement('div')
-    linkList.classList.add('links')
-    linkList.innerText = `${repoList.name}, ${repoList.html_url}, ${repoList.description}`
+    links = repoList.map(function (repo) {
+        return repo.name
+    })
+    console.log("Links", links)
+    // elements = links.map(function (name) {
+    //     return buildRepoElement(name)
+    // })
+    // console.log(elements)
+    
+//     let linkList = document.createElement('div')
+//     linkList.classList.add('links')
+//     linkList.innerText = `${repoList.name}, ${repoList.html_url}, ${repoList.description}`
 
-    myPortfolio.append(linkList)
+//     myPortfolio.append(linkList)
 }
