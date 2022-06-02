@@ -1,6 +1,7 @@
 console.log("Test");
 
 let myGitHub = "https://api.github.com/users/mnrolando3"
+let myRepos = "https://api.github.com/users/mnrolando3/repos"
 
 fetch(myGitHub, {
     method: 'GET',
@@ -20,71 +21,63 @@ fetch(myGitHub, {
         //data is what the above promise returned
         console.log("Hello!", data)
         //show the returned data in the console
+        buildProfile(data)
+        //call function built below on the returned data
+    })
+
+fetch(myRepos, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+})
+    .then(function (response) {
+        return response.json()
+    })
+    .then(function (repos) {
+        console.log("Hello!", repos)
+        buildRepoList(repos)
     })
 
 
 const myPortfolio = document.querySelector('#portfolio')
 
+function buildProfile(profileData) {
+    //create elements and add them to page
+    //profileData is the data from the promise
+    let headerElement = document.createElement('header')
+    headerElement.classList.add('header')
 
-    // const weatherList = document.querySelector('#weather-list')
-    // //get the main box to put data in
-    
-    
-    // for (let report of reports) {
-    //     let reportElement = document.createElement('div')
-    //     reportElement.classList.add('report')
-    
-    //     // let contentElement = document.createElement('article')
-    //     // contentElement.classList.add('city', 'temp', 'weather')
-    
-    //     let imageElement = document.createElement('img')
-    //     imageElement.src = report.image
-    //     //update source of image
-    //     imageElement.alt = 'image of weather'
-    //     //alternate text if image does not show
-    //     imageElement.classList.add("img")
-    
-    //     reportElement.appendChild(imageElement)
-    //     //append child appends last?
-    //     //appends image to content element
-    //     // reportElement.appendChild(contentElement)
-    //     //appends content, including image, to report element
-    
-    //     let cityElement = document.createElement('h1')
-    //     cityElement.classList.add('city')
-    //     cityElement.innerText = `City: ${report.city}`
-    //     //puts specified text in cityElement element, pulling from report data
-    //     reportElement.appendChild(cityElement)
-    
-    //     let tempElement = document.createElement('h2')
-    //     tempElement.classList.add('temp')
-    //     tempElement.innerText = `Temperature: ${report.temp}°F`
-    //     reportElement.appendChild(tempElement)
-    
-    //     let weatherElement = document.createElement('h2')
-    //     weatherElement.classList.add('weather')
-    //     weatherElement.innerText = `Weather: ${report.weather}`
-    //     reportElement.appendChild(weatherElement)
-    
-    //     weatherList.appendChild(reportElement)
-    //     //appends report, including content and image, to weatherList, which is an existing element on the page because it's outside the for loop
-    // }
-    
-    // // let newElement = document.createElement("p")
-    // //     //made a new element that is a p tag
-    // //     newElement.innerText = event.target.textContent;
-    // //     //updated the inner text of that new element to be the contents of the clicked box
-    // //     display.appendChild(newElement);
-    // //     //append the new element containing the p tag to the currently empty display (this is how to get the calculator keys to appear in the result box)
-    
-    // //make js build this for each report
-    // /* <body>
-    //     <div id="weather-list">
-    //         <div class="report">
-    //             <img src="https://www.wunderground.com/static/i/c/v4/30.svg">
-    //             <h1 class="city">City</h1>
-    //             <h2 class="temp">Temp</h2>
-    //             <h3 class="weather">Weather</h3>
-    //         </div>
-    //     </div>
-    // </body> */
+    let imageElement = document.createElement('img')
+    imageElement.src = profileData.avatar_url
+    imageElement.alt = 'Picture of white woman with medium-length brown hair wearing a black top and seated in front of a bookcase.'
+    imageElement.classList.add('img')
+    headerElement.appendChild(imageElement)
+
+    let nameElement = document.createElement('h1')
+    nameElement.innerText = profileData.name
+    headerElement.appendChild(nameElement)
+
+    let bodyElement = document.createElement('body')
+    bodyElement.classList.add('body')
+
+    let infoElement = document.createElement('div')
+    infoElement.classList.add('info')
+    infoElement.innerText = `GitHub URL: ${profileData.html_url} \b\r GitHub Username: ${profileData.login} \b\r LinkedIn URL: ${profileData.blog} \b\r Contact: ${profileData.email}`
+    bodyElement.appendChild(infoElement)
+
+    let repoElement = document.createElement('div')
+    repoElement.classList.add('repo')
+    repoElement.innerText = `GitHub Repositories`
+    bodyElement.appendChild(repoElement)
+
+    myPortfolio.appendChild(headerElement)
+    myPortfolio.appendChild(bodyElement)
+}
+
+function buildRepoList(repoList) {
+    console.log(repoList.name)
+    let linkList = document.createElement('div')
+    linkList.classList.add('links')
+    linkList.innerText = `${repoList.name}, ${repoList.html_url}, ${repoList.description}`
+
+    myPortfolio.append(linkList)
+}
