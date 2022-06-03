@@ -78,14 +78,33 @@ function buildRepoList(repoList) {
         return repo.name
     })
     console.log("Links", links)
+
+    elements = links.map(function (name) {
+        return buildRepoElement(name)
+    })
+    console.log("Elements", elements)
+
+    let linkList = document.createElement('div')
+    linkList.classList.add('links')
+    linkList.innerText = links
+
+    myPortfolio.append(linkList)
     // elements = links.map(function (name) {
     //     return buildRepoElement(name)
     // })
     // console.log(elements)
-    
-//     let linkList = document.createElement('div')
-//     linkList.classList.add('links')
-//     linkList.innerText = `${repoList.name}, ${repoList.html_url}, ${repoList.description}`
 
-//     myPortfolio.append(linkList)
+    //     let linkList = document.createElement('div')
+    //     linkList.classList.add('links')
+    //     linkList.innerText = `${repoList.name}, ${repoList.html_url}, ${repoList.description}`
+
+    //     myPortfolio.append(linkList)
 }
+
+function buildRepoElement(name) {
+    //returns a new element for a repo, like a customer
+    let el = document.createElement('div')
+    el.innerText = name
+    return el
+}
+
