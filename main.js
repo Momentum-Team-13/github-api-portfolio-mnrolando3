@@ -75,18 +75,20 @@ function buildProfile(profileData) {
 
 function buildRepoList(repoList) {
     links = repoList.map(function (repo) {
-        return repo.name
+        return repo.html_url
     })
     console.log("Links", links)
 
-    elements = links.map(function (name) {
-        return buildRepoElement(name)
-    })
-    console.log("Elements", elements)
+    // elements = links.map(function (name) {
+    //     return buildRepoElement(name)
+    // })
+    // console.log("Elements", elements)
 
-    let linkList = document.createElement('div')
+    let linkList = document.createElement('a')
     linkList.classList.add('links')
     linkList.innerText = links
+    for (var i = 0; i < linkList.length; i++)
+        console.log("count", linkList[i])
 
     myPortfolio.append(linkList)
     // elements = links.map(function (name) {
