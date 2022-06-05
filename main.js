@@ -1,48 +1,38 @@
-console.log("Test");
-
+const myPortfolio = document.querySelector('#portfolio')
 let myGitHub = "https://api.github.com/users/mnrolando3"
 let myRepos = "https://api.github.com/users/mnrolando3/repos"
+//variables defined for use in code below
 
 fetch(myGitHub, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
-    //body: JSON.stringify({
-    //  username: '',
-    //  email: '',
-    //}),
-    //we don't need stuff in body right now, but would convert the values into JSON
 })
+//this gets the API data for my profile on GitHub
     .then(function (response) {
-        //the response is the promised data; data will take some time to retrieve and .then delays request (We are saying, "Go to URL and get information, then, when you have the information, we will use it.")
         return response.json()
-        //when you get the response, give it back to me as JSON
     })
     .then(function (data) {
-        //data is what the above promise returned
         console.log("Data", data)
-        //show the returned data in the console
         buildProfile(data)
-        //call function built below on the returned data
+        //this calls the buildProfile function with the promised response
     })
 
 fetch(myRepos, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
 })
+//this gets the API data for my repos on GitHub
     .then(function (response) {
         return response.json()
     })
     .then(function (repos) {
         console.log("Repos", repos)
         buildRepoList(repos)
+        //this calls the buildRepoList function with the promised reponse
     })
 
-
-const myPortfolio = document.querySelector('#portfolio')
-
 function buildProfile(profileData) {
-    //create elements and add them to page
-    //profileData is the data from the promise
+    
     let headerElement = document.createElement('header')
     headerElement.classList.add('header')
 
@@ -87,8 +77,9 @@ function buildRepoList(repoList) {
     let linkList = document.createElement('a')
     linkList.classList.add('links')
     linkList.innerText = links
-    for (var i = 0; i < linkList.length; i++)
+    for (let i = 0; i < linkList.length; i++)
         console.log("count", linkList[i])
+
 
     myPortfolio.append(linkList)
     // elements = links.map(function (name) {
@@ -103,10 +94,10 @@ function buildRepoList(repoList) {
     //     myPortfolio.append(linkList)
 }
 
-function buildRepoElement(name) {
-    //returns a new element for a repo, like a customer
-    let el = document.createElement('div')
-    el.innerText = name
-    return el
-}
+// function buildRepoElement(name) {
+//     //returns a new element for a repo, like a customer
+//     let el = document.createElement('div')
+//     el.innerText = name
+//     return el
+// }
 
