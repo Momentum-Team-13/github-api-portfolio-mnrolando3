@@ -7,7 +7,7 @@ fetch(myGitHub, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
 })
-//this gets the API data for my profile on GitHub
+    //this gets the API data for my profile on GitHub
     .then(function (response) {
         return response.json()
     })
@@ -21,7 +21,7 @@ fetch(myRepos, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
 })
-//this gets the API data for my repos on GitHub
+    //this gets the API data for my repos on GitHub
     .then(function (response) {
         return response.json()
     })
@@ -32,9 +32,13 @@ fetch(myRepos, {
     })
 
 function buildProfile(profileData) {
-    
+
     let headerElement = document.createElement('header')
     headerElement.classList.add('header')
+
+    let bodyElement = document.createElement('body')
+    bodyElement.classList.add('body')
+    //this defines the two main sections of my profile page
 
     let imageElement = document.createElement('img')
     imageElement.src = profileData.avatar_url
@@ -45,9 +49,6 @@ function buildProfile(profileData) {
     let nameElement = document.createElement('h1')
     nameElement.innerText = profileData.name
     headerElement.appendChild(nameElement)
-
-    let bodyElement = document.createElement('body')
-    bodyElement.classList.add('body')
 
     let infoElement = document.createElement('div')
     infoElement.classList.add('info')
@@ -62,6 +63,7 @@ function buildProfile(profileData) {
     myPortfolio.appendChild(headerElement)
     myPortfolio.appendChild(bodyElement)
 }
+//this function builds data from my profile
 
 function buildRepoList(repoList) {
     links = repoList.map(function (repo) {
@@ -69,35 +71,10 @@ function buildRepoList(repoList) {
     })
     console.log("Links", links)
 
-    // elements = links.map(function (name) {
-    //     return buildRepoElement(name)
-    // })
-    // console.log("Elements", elements)
+    let linkElement = document.createElement('div')
+    linkElement.classList.add('links')
+    linkElement.innerText = links
 
-    let linkList = document.createElement('a')
-    linkList.classList.add('links')
-    linkList.innerText = links
-    for (let i = 0; i < linkList.length; i++)
-        console.log("count", linkList[i])
-
-
-    myPortfolio.append(linkList)
-    // elements = links.map(function (name) {
-    //     return buildRepoElement(name)
-    // })
-    // console.log(elements)
-
-    //     let linkList = document.createElement('div')
-    //     linkList.classList.add('links')
-    //     linkList.innerText = `${repoList.name}, ${repoList.html_url}, ${repoList.description}`
-
-    //     myPortfolio.append(linkList)
+    myPortfolio.append(linkElement)
 }
-
-// function buildRepoElement(name) {
-//     //returns a new element for a repo, like a customer
-//     let el = document.createElement('div')
-//     el.innerText = name
-//     return el
-// }
-
+//this function builds data from my repos

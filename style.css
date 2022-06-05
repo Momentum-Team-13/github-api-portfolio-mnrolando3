@@ -3,10 +3,10 @@
 }
 
 header {
-    /* display: flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center; */
+    align-items: center;
     border: 5px solid magenta;
 }
 
@@ -21,8 +21,7 @@ img{
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+    margin: 0px;
 }
 
 .info {
@@ -30,9 +29,10 @@ body {
 }
 
 .repo {
+    background: lightgray;
     border: 5px solid blueviolet;
 }
 
 .links {
-    
+
 }
