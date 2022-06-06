@@ -6,11 +6,10 @@ header {
     justify-content: space-between;
     align-items: center;
     margin: 5px;
-}
-
-.name {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.name {}
 
 img {
     width: 100px;
@@ -18,27 +17,26 @@ img {
     border-radius: 50%;
 }
 
-body {
-    margin: 0px;
+.page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 5px;
 }
 
 .info {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 2px;
     text-decoration: none;
-    margin: 5px;
 }
 
 .repo {
     font-size: x-large;
     font-weight: bold;
     background: lightgray;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-left: 5px;
 }
 
 .links {
-    padding: 2px;
-    margin: 5px;
     text-decoration: none;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2px;
 }
