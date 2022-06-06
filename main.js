@@ -54,6 +54,10 @@ function buildProfile(profileData) {
     infoElement.classList.add('info')
     bodyElement.appendChild(infoElement)
 
+    let locationElement = document.createElement('div')
+    locationElement.innerHTML = `Location: ${profileData.location}`
+    infoElement.appendChild(locationElement)
+
     let gHURLElement = document.createElement('div')
     gHURLElement.innerHTML = `GitHub URL: <a href=${profileData.html_url}>${profileData.html_url.slice(8)}</a>`
     infoElement.appendChild(gHURLElement)
@@ -65,10 +69,6 @@ function buildProfile(profileData) {
     let blogElement = document.createElement('div')
     blogElement.innerHTML = `LinkedIn URL: <a href=${profileData.blog}>${profileData.blog.slice(12)}</a>`
     infoElement.appendChild(blogElement)
-
-    // let contactElement = document.createElement('div')
-    // contactElement.innerHTML = `Contact: ${profileData.email}`
-    // infoElement.appendChild(contactElement)
 
     let repoElement = document.createElement('div')
     repoElement.classList.add('repo')

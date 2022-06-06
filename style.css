@@ -1,5 +1,5 @@
 #portfolio {
-    border: 5px solid green;
+
 }
 
 header {
@@ -9,7 +9,9 @@ header {
     align-items: center;
 }
 
-.name {}
+.name {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 img {
     width: 100px;
@@ -22,17 +24,20 @@ body {
 }
 
 .info {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 2px;
     text-decoration: none;
 }
 
 .repo {
     font-size: x-large;
-    font-style: bold;
+    font-weight: bold;
     background: lightgray;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .links {
     padding: 2px;
     text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
