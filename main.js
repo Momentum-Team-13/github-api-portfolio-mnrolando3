@@ -52,8 +52,23 @@ function buildProfile(profileData) {
 
     let infoElement = document.createElement('div')
     infoElement.classList.add('info')
-    infoElement.innerText = `GitHub URL: ${profileData.html_url} \b\r GitHub Username: ${profileData.login} \b\r LinkedIn URL: ${profileData.blog} \b\r Contact: ${profileData.email}`
     bodyElement.appendChild(infoElement)
+
+    let gHURLElement = document.createElement('div')
+    gHURLElement.innerHTML = `GitHub URL: <a href=${profileData.html_url}>${profileData.html_url.slice(8)}</a>`
+    infoElement.appendChild(gHURLElement)
+
+    let usernameElement = document.createElement('div')
+    usernameElement.innerHTML = `GitHub Username: ${profileData.login}`
+    infoElement.appendChild(usernameElement)
+
+    let blogElement = document.createElement('div')
+    blogElement.innerHTML = `LinkedIn URL: <a href=${profileData.blog}>${profileData.blog.slice(12)}</a>`
+    infoElement.appendChild(blogElement)
+
+    // let contactElement = document.createElement('div')
+    // contactElement.innerHTML = `Contact: ${profileData.email}`
+    // infoElement.appendChild(contactElement)
 
     let repoElement = document.createElement('div')
     repoElement.classList.add('repo')
@@ -71,10 +86,14 @@ function buildRepoList(repoList) {
     })
     console.log("Links", links)
 
-    let linkElement = document.createElement('div')
-    linkElement.classList.add('links')
-    linkElement.innerText = links
+    for (let link of links) {
+        console.log("url", link)
 
-    myPortfolio.append(linkElement)
+        let linkElement = document.createElement('div')
+        linkElement.classList.add('links')
+        linkElement.innerHTML = `<a href=${link}>${link.slice(30)}</a>`
+
+        myPortfolio.appendChild(linkElement)
+    }
 }
 //this function builds data from my repos

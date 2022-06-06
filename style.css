@@ -7,14 +7,11 @@ header {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    border: 5px solid magenta;
 }
 
-.name{
-    border: 5px solid black;
-}
+.name {}
 
-img{
+img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -25,14 +22,17 @@ body {
 }
 
 .info {
-    border: 5px solid gray;
+    padding: 2px;
+    text-decoration: none;
 }
 
 .repo {
+    font-size: x-large;
+    font-style: bold;
     background: lightgray;
-    border: 5px solid blueviolet;
 }
 
 .links {
-
+    padding: 2px;
+    text-decoration: none;
 }
