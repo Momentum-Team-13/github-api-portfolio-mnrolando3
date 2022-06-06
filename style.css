@@ -1,12 +1,11 @@
-#portfolio {
-
-}
+#portfolio {}
 
 header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    margin: 5px;
 }
 
 .name {
@@ -27,6 +26,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 2px;
     text-decoration: none;
+    margin: 5px;
 }
 
 .repo {
@@ -38,6 +38,7 @@ body {
 
 .links {
     padding: 2px;
+    margin: 5px;
     text-decoration: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
